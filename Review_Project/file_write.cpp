@@ -1,25 +1,27 @@
-#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS // 보안 경고를 비활성화하는 매크로
 #include <stdio.h>
 
 int main() {
-	FILE* fp = NULL; //파일 선언
+    FILE* fp = NULL; // 파일 포인터 선언
 
-	fp = fopen("output.txt", "w"); //w(쓰기) 모드로 파일 열기(없다면 생성)
+    // "output.txt" 파일을 쓰기 모드("w")로 열기. 파일이 없으면 새로 생성됩니다.
+    fp = fopen("output.txt", "w");
 
-	if (fp == NULL) { //파일이 열리지 않는 오류가 났을 때를 대비
-		printf("파일 열기에 실패하였습니다\n");
-	}
-	else {
-		printf("파일 열기에 성공했습니다.\n");
-	}
+    if (fp == NULL) { // 파일 열기에 실패한 경우
+        printf("파일 열기에 실패하였습니다\n");
+    }
+    else { // 파일 열기에 성공한 경우
+        printf("파일 열기에 성공했습니다.\n");
+    }
 
-	fputc('H', fp); //파일에 글쓰기
-	fputc('E', fp);
-	fputc('L', fp);
-	fputc('L', fp);
-	fputc('O', fp);
+    // 파일에 문자 하나씩 쓰기
+    fputc('H', fp);
+    fputc('E', fp);
+    fputc('L', fp);
+    fputc('L', fp);
+    fputc('O', fp);
 
-	fclose(fp);
+    fclose(fp); // 파일 닫기
 
-	return 0;
+    return 0;
 }
