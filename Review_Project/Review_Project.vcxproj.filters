@@ -63,7 +63,10 @@
     <ClCompile Include="algorithm_stack.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="alghorithm_queue.cpp">
+    <ClCompile Include="alghorithm_linear_queue.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="alghorithm_circular_queue.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
