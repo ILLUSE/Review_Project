@@ -102,6 +102,41 @@ node* insertNode(node* head, int value) {
 	return head;
 }
 
+node* deleteNode(node* head) {
+
+	int index; //지우기 원하는 인덱스 입력받음
+	printf("Which index do you want to delete? : ");
+	scanf_s("%d", &index);
+
+	node* temp = head; //원본 리스트 보관
+	if (index == 0) { //첫 번째 인덱스 지우기
+		head = head->next; //head를 두번쨰 노드로 업데이트
+		free(temp); //복제본 메모리 해제
+	}
+	else {
+		node* prev = NULL; //이전 인덱스 
+		int count = 0 ;
+		while (temp != NULL && count < index) {
+			prev = temp;
+			temp = temp->next;
+			count++;
+		}
+
+		if (temp == NULL) {
+			printf("Index out of bounds\n");
+		}
+		else {
+			prev->next = temp->next; // 이전 노드의 next를 삭제할 노드의 다음 노드로 업데이트
+			free(temp); // 삭제할 노드 해제
+
+		}
+
+	}
+
+	return(head);
+
+}
+
 void freeLinkedList(node* head) { 
 
 	node* p = NULL; //임시 포인터 선언
@@ -126,6 +161,7 @@ int main() {
 	scanf_s("%d", &n);
 	HEAD = createLinkedList(n);
 	printf("\n");
+
 	//노드 삽입 전
 	displayList(HEAD);
 	
@@ -136,6 +172,16 @@ int main() {
 
 	//노드 삽입 후
 	displayList(HEAD);
+
+	HEAD = deleteNode(HEAD);
+
+	displayList(HEAD);
+
+	HEAD = deleteNode(HEAD);
+
+	//노드 삭제 후
+	displayList(HEAD);
+
 
 	freeLinkedList(HEAD);
 	return 0;
